@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :edit, :update, :show, :destroy
+  before_action :set_list, only: [:edit, :update, :show, :destroy]
 
   def new
     @list = List.new
@@ -22,7 +22,6 @@ class ListsController < ApplicationController
   end
 
   def update
-
   end
 
   def show
