@@ -1,0 +1,7 @@
+<br>
+<h1>Here are your lists of movies!</h1>
+<% @lists.each do |list| %>
+  <div class="card">
+    <h2><%= link_to list.name, list_path(list) %></h2>
+  </div>
+<% end %>
