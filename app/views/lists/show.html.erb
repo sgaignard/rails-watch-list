@@ -1,17 +1,32 @@
-<h1><%= @list.name %></h1>
-
-<%= link_to "Return to Lists", lists_path %>
-<%= link_to "Add a new bookmark", new_list_bookmark_path(@list) %>
-
-<% @list.bookmarks.each do |bookmark| %>
-  <div class="card">
-    <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>-poster">
-    <h5><%= bookmark.movie.title %></h5>
-      <p>Rating: <%= bookmark.movie.rating %></p>
-      <p>Overview: <%= bookmark.movie.overview %></p>
-      <%= link_to "Delete",
-                  bookmark_path(bookmark),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://entrepreneurship.babson.edu/wp-content/uploads/2020/10/Movie-1200-630.jpg);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <%= link_to "Return to Lists", root_path, class: "btn btn-flat" %>
+    <%= link_to "Add a new bookmark", new_list_bookmark_path(@list), class: "btn btn-flat" %>
   </div>
-<% end %>
+</div>
+
+
+<div class="container">
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-trip">
+          <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>-poster">
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <h3><%= bookmark.movie.rating %> ★</h3>
+          </div>
+          <p><%= bookmark.movie.overview %></p>
+          <br>
+          <p><em>"<%= bookmark.comment %>"</em></p>
+          <%= link_to "Delete",
+                    bookmark_path(bookmark),
+                    method: :delete,
+                    class: "btn btn-ghost",
+                    data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
